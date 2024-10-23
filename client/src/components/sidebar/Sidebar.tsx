@@ -1,14 +1,7 @@
 import TabButton from "@/components/tabs/TabButton"
-import { useAppContext } from "@/context/AppContext"
-import { useSocket } from "@/context/SocketContext"
 import { useTabs } from "@/context/TabContext"
 import useResponsive from "@/hooks/useResponsive"
-import useWindowDimensions from "@/hooks/useWindowDimensions"
-import { ACTIVITY_STATE } from "@/types/app"
-import { MessageEvent } from "@/types/socket"
 import { TABS } from "@/types/tab"
-import { IoCodeSlash } from "react-icons/io5"
-import { MdOutlineDraw } from "react-icons/md"
 
 function Sidebar() {
     const {
@@ -16,25 +9,8 @@ function Sidebar() {
         isSidebarOpen,
         tabComponents,
         tabIcons,
-        setIsSidebarOpen,
     } = useTabs()
     const { showSidebar } = useResponsive()
-    const { activityState, setActivityState } = useAppContext()
-    const { socket } = useSocket()
-    const { isMobile } = useWindowDimensions()
-
-    const changeState = () => {
-        if (activityState === ACTIVITY_STATE.CODING) {
-            setActivityState(ACTIVITY_STATE.DRAWING)
-            socket.emit(MessageEvent.REQUEST_DRAWING)
-        } else {
-            setActivityState(ACTIVITY_STATE.CODING)
-        }
-
-        if (isMobile) {
-            setIsSidebarOpen(false)
-        }
-    }
 
     return (
         <aside className="flex w-full md:h-full md:max-h-full md:min-h-full md:w-auto">

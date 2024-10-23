@@ -4,7 +4,7 @@ import useWindowDimensions from "@/hooks/useWindowDimensions"
 import { File } from "@/types/file"
 import langMap from "lang-map"
 import { ChangeEvent, useRef } from "react"
-import { BiArchiveIn } from "react-icons/bi"
+// import { BiArchiveIn } from "react-icons/bi"
 import { LuDownload } from "react-icons/lu"
 import { TbFileUpload } from "react-icons/tb"
 import { v4 as uuidv4 } from "uuid"
@@ -16,7 +16,7 @@ function FilesTab() {
         updateFile,
         setFiles,
         downloadCurrentFile,
-        downloadAllFiles,
+        // downloadAllFiles,
     } = useFileStore()
     const fileInputRef = useRef<HTMLInputElement | null>(null)
     const { tabHeight } = useWindowDimensions()
